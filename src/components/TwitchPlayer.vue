@@ -2,14 +2,14 @@
 
 <template>
   <div class="twitch-player-container">
+    <q-spinner v-if="getIframeLoading" :color="$q.dark.isActive ? 'white' : 'primary'" size="7em" />
     <iframe id="video_embed" :src="getTwitchPlayerSrc" height="100%" width="100%" frameborder="0" scrolling="no"
-            style="border: none;" v-show="!getIframeLoading">
+            style="border: none;" @load="iframeLoaded">
     </iframe>
   </div>
 </template>
 
 <script setup>
-// eslint-disable-next-line no-unused-vars
 import { ref, computed } from 'vue'
 import { useQuasar } from 'quasar'
 
@@ -20,6 +20,22 @@ const getTwitchPlayerSrc = computed(() => {
     ? 'https://player.twitch.tv/?channel=baiano&parent=multistream-ten.vercel.app&darkpopout'
     : 'https://player.twitch.tv/?channel=baiano&parent=multistream-ten.vercel.app'
 })
+
+const iframeLoadingDark = ref(true)
+const iframeLoadingLight = ref(true)
+const iframeLoadingTheme = ref('dark') // Padrão para o tema escuro
+
+const getIframeLoading = computed(() => {
+  return iframeLoadingTheme.value === 'dark' ? iframeLoadingDark.value : iframeLoadingLight.value
+})
+
+const iframeLoaded = () => {
+  if (iframeLoadingTheme.value === 'dark') {
+    iframeLoadingDark.value = false
+  } else {
+    iframeLoadingLight.value = false
+  }
+}
 </script>
 
 <style scoped>
