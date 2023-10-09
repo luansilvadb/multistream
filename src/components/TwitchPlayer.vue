@@ -1,44 +1,39 @@
-<!-- TwitchPlayer.vue -->
 <template>
   <div class="twitch-player-container">
-    <div v-if="shouldShowSpinner" class="spinner-container">
+    <div v-if="getIframeLoading" class="spinner-container">
       <q-spinner :color="$q.dark.isActive ? 'white' : 'primary'" size="7em" />
     </div>
     <iframe id="video_embed" :src="getTwitchPlayerSrc" frameborder="0" scrolling="no"
-            style="border: none;" @load="iframeLoaded" v-show="!iframeLoading">
+            style="border: none;" @load="iframeLoaded" v-show="!getIframeLoading">
     </iframe>
   </div>
 </template>
 
 <script setup>
-import { ref, computed, watch } from 'vue'
+import { ref, computed } from 'vue'
 import { useQuasar } from 'quasar'
 
-const props = defineProps(['currentTheme', 'rightDrawerOpen'])
-
-const iframeLoading = ref(true)
+const iframeLoadingDark = ref(true)
+const iframeLoadingLight = ref(true)
+const iframeLoadingTheme = ref('dark') // Padrão para o tema escuro
 const $q = useQuasar()
 
-const shouldShowSpinner = computed(() => {
-  return iframeLoading.value && props.rightDrawerOpen
+const getIframeLoading = computed(() => {
+  return iframeLoadingTheme.value === 'dark' ? iframeLoadingDark.value : iframeLoadingLight.value
 })
 
 const getTwitchPlayerSrc = computed(() => {
-  return props.currentTheme
-    ? 'https://player.twitch.tv/?channel=baiano&parent=multistream-ten.vercel.app&darkpopout'
-    : 'https://player.twitch.tv/?channel=baiano&parent=multistream-ten.vercel.app'
+  return $q.dark.isActive
+    ? 'https://player.twitch.tv/?channel=baiano&parent=stream.luansilva.com.br&darkpopout'
+    : 'https://player.twitch.tv/?channel=baiano&parent=stream.luansilva.com.br'
 })
 
-watch(
-  () => props.rightDrawerOpen,
-  (newRightDrawerOpen) => {
-    console.log('Right Drawer Open:', newRightDrawerOpen)
-    // Additional logic as needed
-  }
-)
-
 const iframeLoaded = () => {
-  iframeLoading.value = false
+  if (iframeLoadingTheme.value === 'dark') {
+    iframeLoadingDark.value = false
+  } else {
+    iframeLoadingLight.value = false
+  }
 }
 
 </script>
