@@ -2,7 +2,7 @@
   <div class="twitch-player-container">
     <q-spinner v-if="getIframeLoading" :color="$q.dark.isActive ? 'white' : 'primary'" size="7em" />
     <iframe id="video_embed" :src="getTwitchPlayerSrc" height="100%" width="100%" frameborder="0" scrolling="no"
-            style="border: none;" v-show="!getIframeLoading">
+            style="border: none;" @load="iframeLoaded">
     </iframe>
   </div>
 </template>
@@ -21,6 +21,10 @@ const getTwitchPlayerSrc = computed(() => {
 })
 
 const getIframeLoading = computed(() => iframeLoading.value)
+
+const iframeLoaded = () => {
+  iframeLoading.value = false
+}
 
 </script>
 
