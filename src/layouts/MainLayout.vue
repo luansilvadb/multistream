@@ -37,7 +37,7 @@
       </q-drawer>
 
       <q-drawer show-if-above v-model="rightDrawerOpen" side="right" width="340"
-        :class="[$q.dark.isActive ? 'bg-dark text-white' : 'bg-white text-dark']">
+      :class="[$q.dark.isActive ? 'bg-dark text-white' : 'bg-white text-dark']" @click="drawerClicked">
         <div
           style="position: relative; height: 21.5%; width: 100%; display: flex; align-items: center; justify-content: center;">
           <q-spinner v-if="getIframeLoading" :color="$q.dark.isActive ? 'white' : 'primary'" size="7em" />
@@ -91,14 +91,14 @@ const getIframeLoading = computed(() => {
 
 const getVideoSrc = computed(() => {
   return $q.dark.isActive
-    ? 'https://player.twitch.tv/?channel=daniels&parent=multistream-ten.vercel.app&darkpopout'
-    : 'https://player.twitch.tv/?channel=daniels&parent=multistream-ten.vercel.app'
+    ? 'https://player.twitch.tv/?channel=daniels&parent=stream.luansilva.com.br&darkpopout'
+    : 'https://player.twitch.tv/?channel=daniels&parent=stream.luansilva.com.br'
 })
 
 const getChatSrc = computed(() => {
   return $q.dark.isActive
-    ? 'https://www.twitch.tv/embed/daniels/chat?parent=multistream-ten.vercel.app&darkpopout'
-    : 'https://www.twitch.tv/embed/daniels/chat?parent=multistream-ten.vercel.app'
+    ? 'https://www.twitch.tv/embed/daniels/chat?parent=stream.luansilva.com.br&darkpopout'
+    : 'https://www.twitch.tv/embed/daniels/chat?parent=stream.luansilva.com.br'
 })
 
 const toggleDrawer = () => {
@@ -129,7 +129,11 @@ const getColor = () => {
   if (hover.value) return '#1976D2'
   return $q.dark.isActive ? 'white' : 'black'
 }
-
+const drawerClicked = () => {
+  // Emitir um evento quando o drawer for clicado
+  // eslint-disable-next-line no-undef
+  emit('drawerClick')
+}
 </script>
 
 <style scoped>
