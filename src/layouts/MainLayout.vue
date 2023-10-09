@@ -37,23 +37,24 @@
       </q-drawer>
 
       <q-drawer show-if-above v-model="rightDrawerOpen" side="right" width="340"
-      :class="[$q.dark.isActive ? 'bg-dark text-white' : 'bg-white text-dark']" @click="drawerClicked">
-        <div
-          style="position: relative; height: 21.5%; width: 100%; display: flex; align-items: center; justify-content: center;">
-          <q-spinner v-if="getIframeLoading" :color="$q.dark.isActive ? 'white' : 'primary'" size="7em" />
-          <iframe id="video_embed" :src="getVideoSrc" height="100%" width="100%" frameborder="0" scrolling="no"
-            style="border: none;" v-show="!getIframeLoading">
-          </iframe>
-        </div>
+  :class="[$q.dark.isActive ? 'bg-dark text-white' : 'bg-white text-dark']">
+  <twitch-player :currentTheme="$q.dark.isActive" :rightDrawerOpen="rightDrawerOpen" />
+  <!-- Use a single spinner for both iframes -->
+  <div style="position: relative; height: 21.5%; width: 100%; display: flex; align-items: center; justify-content: center;">
+    <q-spinner v-if="getIframeLoading" :color="$q.dark.isActive ? 'white' : 'primary'" size="7em" />
+    <iframe id="video_embed" :src="getVideoSrc" height="100%" width="100%" frameborder="0" scrolling="no"
+      style="border: none;" v-show="!getIframeLoading">
+    </iframe>
+  </div>
 
-        <div
-          style="position: relative; height: 78.5%; width: 100%; display: flex; align-items: center; justify-content: center;">
-          <q-spinner v-if="getIframeLoading" :color="$q.dark.isActive ? 'white' : 'primary'" size="7em" />
-          <iframe frameborder="0" scrolling="no" id="chat_embed" :src="getChatSrc" @load="iframeLoaded" height="100%"
-            width="100%" style="border: none;" v-show="!getIframeLoading">
-          </iframe>
-        </div>
-      </q-drawer>
+  <div style="position: relative; height: 78.5%; width: 100%; display: flex; align-items: center; justify-content: center;">
+    <!-- Reuse the same spinner computed property -->
+    <q-spinner v-if="getIframeLoading" :color="$q.dark.isActive ? 'white' : 'primary'" size="7em" />
+    <iframe frameborder="0" scrolling="no" id="chat_embed" :src="getChatSrc" @load="iframeLoaded" height="100%"
+      width="100%" style="border: none;" v-show="!getIframeLoading">
+    </iframe>
+  </div>
+</q-drawer>
 
       <q-page-container :class="[$q.dark.isActive ? 'bg-dark text-white' : 'bg-white text-dark']">
         <router-view />
@@ -91,14 +92,14 @@ const getIframeLoading = computed(() => {
 
 const getVideoSrc = computed(() => {
   return $q.dark.isActive
-    ? 'https://player.twitch.tv/?channel=daniels&parent=multistream-ten.vercel.app&darkpopout'
-    : 'https://player.twitch.tv/?channel=daniels&parent=multistream-ten.vercel.app'
+    ? 'https://player.twitch.tv/?channel=daniels&parent=stream.luansilva.com.br&darkpopout'
+    : 'https://player.twitch.tv/?channel=daniels&parent=stream.luansilva.com.br'
 })
 
 const getChatSrc = computed(() => {
   return $q.dark.isActive
-    ? 'https://www.twitch.tv/embed/daniels/chat?parent=multistream-ten.vercel.app&darkpopout'
-    : 'https://www.twitch.tv/embed/daniels/chat?parent=multistream-ten.vercel.app'
+    ? 'https://www.twitch.tv/embed/daniels/chat?parent=stream.luansilva.com.br&darkpopout'
+    : 'https://www.twitch.tv/embed/daniels/chat?parent=stream.luansilva.com.br'
 })
 
 const toggleDrawer = () => {
@@ -129,11 +130,7 @@ const getColor = () => {
   if (hover.value) return '#1976D2'
   return $q.dark.isActive ? 'white' : 'black'
 }
-const drawerClicked = () => {
-  // Emitir um evento quando o drawer for clicado
-  // eslint-disable-next-line no-undef
-  emit('drawerClick')
-}
+
 </script>
 
 <style scoped>

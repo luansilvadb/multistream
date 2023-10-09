@@ -1,39 +1,44 @@
+<!-- TwitchPlayer.vue -->
 <template>
   <div class="twitch-player-container">
-    <div v-if="getIframeLoading" class="spinner-container">
+    <div v-if="shouldShowSpinner" class="spinner-container">
       <q-spinner :color="$q.dark.isActive ? 'white' : 'primary'" size="7em" />
     </div>
     <iframe id="video_embed" :src="getTwitchPlayerSrc" frameborder="0" scrolling="no"
-            style="border: none;" @load="iframeLoaded" v-show="!getIframeLoading">
+            style="border: none;" @load="iframeLoaded" v-show="!iframeLoading">
     </iframe>
   </div>
 </template>
 
 <script setup>
-import { ref, computed } from 'vue'
+import { ref, computed, watch } from 'vue'
 import { useQuasar } from 'quasar'
 
-const iframeLoadingDark = ref(true)
-const iframeLoadingLight = ref(true)
-const iframeLoadingTheme = ref('dark') // Padrão para o tema escuro
+const props = defineProps(['currentTheme', 'rightDrawerOpen'])
+
+const iframeLoading = ref(true)
 const $q = useQuasar()
 
-const getIframeLoading = computed(() => {
-  return iframeLoadingTheme.value === 'dark' ? iframeLoadingDark.value : iframeLoadingLight.value
+const shouldShowSpinner = computed(() => {
+  return iframeLoading.value && props.rightDrawerOpen
 })
 
 const getTwitchPlayerSrc = computed(() => {
-  return $q.dark.isActive
+  return props.currentTheme
     ? 'https://player.twitch.tv/?channel=baiano&parent=multistream-ten.vercel.app&darkpopout'
     : 'https://player.twitch.tv/?channel=baiano&parent=multistream-ten.vercel.app'
 })
 
-const iframeLoaded = () => {
-  if (iframeLoadingTheme.value === 'dark') {
-    iframeLoadingDark.value = false
-  } else {
-    iframeLoadingLight.value = false
+watch(
+  () => props.rightDrawerOpen,
+  (newRightDrawerOpen) => {
+    console.log('Right Drawer Open:', newRightDrawerOpen)
+    // Additional logic as needed
   }
+)
+
+const iframeLoaded = () => {
+  iframeLoading.value = false
 }
 
 </script>
