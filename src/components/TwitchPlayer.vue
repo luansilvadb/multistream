@@ -24,8 +24,8 @@ const getIframeLoading = computed(() => {
 
 const getTwitchPlayerSrc = computed(() => {
   return $q.dark.isActive
-    ? 'https://player.twitch.tv/?channel=baiano&parent=stream.luansilva.com.br&darkpopout'
-    : 'https://player.twitch.tv/?channel=baiano&parent=stream.luansilva.com.br'
+    ? 'https://player.twitch.tv/?channel=baiano&parent=multistream-ten.vercel.app&darkpopout'
+    : 'https://player.twitch.tv/?channel=baiano&parent=multistream-ten.vercel.app'
 })
 
 const iframeLoaded = () => {
