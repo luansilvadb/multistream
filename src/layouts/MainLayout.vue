@@ -91,14 +91,14 @@ const getIframeLoading = computed(() => {
 
 const getVideoSrc = computed(() => {
   return $q.dark.isActive
-    ? 'https://player.twitch.tv/?channel=daniels&parent=stream.luansilva.com.br&darkpopout'
-    : 'https://player.twitch.tv/?channel=daniels&parent=stream.luansilva.com.br'
+    ? 'https://player.twitch.tv/?channel=daniels&parent=multistream-ten.vercel.app&darkpopout'
+    : 'https://player.twitch.tv/?channel=daniels&parent=multistream-ten.vercel.app'
 })
 
 const getChatSrc = computed(() => {
   return $q.dark.isActive
-    ? 'https://www.twitch.tv/embed/daniels/chat?parent=stream.luansilva.com.br&darkpopout'
-    : 'https://www.twitch.tv/embed/daniels/chat?parent=stream.luansilva.com.br'
+    ? 'https://www.twitch.tv/embed/daniels/chat?parent=multistream-ten.vercel.app&darkpopout'
+    : 'https://www.twitch.tv/embed/daniels/chat?parent=multistream-ten.vercel.app'
 })
 
 const toggleDrawer = () => {
