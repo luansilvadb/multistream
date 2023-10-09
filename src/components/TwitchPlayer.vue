@@ -2,15 +2,9 @@
 
 <template>
   <div class="twitch-player-container">
-    <iframe
-      id="twitchPlayer"
-      :src="getTwitchPlayerSrc"
-      height="100%"
-      width="100%"
-      frameborder="0"
-      scrolling="no"
-      style="border: none;"
-    ></iframe>
+    <iframe id="video_embed" :src="getTwitchPlayerSrc" height="100%" width="100%" frameborder="0" scrolling="no"
+            style="border: none;" v-show="!getIframeLoading">
+    </iframe>
   </div>
 </template>
 
@@ -30,7 +24,17 @@ const getTwitchPlayerSrc = computed(() => {
 
 <style scoped>
 .twitch-player-container {
-  height: 100%;
+  position: relative;
   width: 100%;
+  padding-bottom: 56.25%; /* 16:9 aspect ratio - adjust as needed */
+  overflow: hidden;
+}
+
+.twitch-player-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 }
 </style>
