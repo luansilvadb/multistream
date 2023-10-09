@@ -16,7 +16,7 @@
         </q-toolbar>
       </q-header>
 
-      <q-drawer v-model="drawer" show-if-above :mini="miniState" @mouseover="miniState = false"
+      <q-drawer v-model="drawer" :mini="miniState" @mouseover="miniState = false"
         @mouseout="miniState = true" :width="200" :breakpoint="500"
         :class="[$q.dark.isActive ? 'bg-dark text-white' : 'bg-white text-dark']">
         <q-scroll-area class="fit" :class="[$q.dark.isActive ? 'bg-dark text-white' : 'bg-white text-dark']">
