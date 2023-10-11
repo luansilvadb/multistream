@@ -4,7 +4,7 @@ const routes = [
     name: 'Daniels',
     component: () => import('layouts/MainLayout.vue'),
     meta: {
-      title: 'Daniels'
+      title: 'Daniels E-Sports'
     },
     children: [
       { path: '', component: () => import('pages/IndexPage.vue') },
