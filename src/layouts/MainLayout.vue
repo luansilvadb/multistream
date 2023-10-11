@@ -15,12 +15,8 @@
           <q-btn dense flat round icon="dark_mode" @click="toggleDarkMode" ><q-tooltip>
           Tema
         </q-tooltip> </q-btn>
-          <q-btn flat round dense icon="more_vert" />
-          <q-btn flat round dense icon="more_vert" />
-          <q-btn flat round dense icon="more_vert" />
-          <q-btn flat round dense icon="more_vert" />
-          <q-btn flat round dense icon="more_vert" />
-          <q-btn flat round dense icon="more_vert" />
+
+          <q-btn flat round dense :icon="fullscreenIcon" @click="toggleFullscreen" />
         </q-toolbar>
       </q-header>
 
@@ -141,6 +137,23 @@ const getColor = () => {
 const isMobile = computed(() => {
   return $q.screen.width <= 500 // Defina o valor conforme necessário
 })
+const isFullscreen = ref(false)
+
+const fullscreenIcon = computed(() => (isFullscreen.value ? 'fullscreen_exit' : 'fullscreen'))
+
+const toggleFullscreen = () => {
+  const element = document.documentElement
+
+  if (document.fullscreenElement) {
+    document.exitFullscreen()
+    isFullscreen.value = false
+  } else {
+    element.requestFullscreen().catch((err) => {
+      console.error(`Error attempting to enable full-screen mode: ${err.message}`)
+    })
+    isFullscreen.value = true
+  }
+}
 </script>
 
 <style scoped>
