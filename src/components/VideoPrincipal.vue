@@ -5,7 +5,7 @@
       :style="{ border: 'none', borderRadius: '10px' }"
       :src="videoSrc"
     />
-    <q-btn :loading="loading[3]" color="primary" @click="simulateProgress(3)" style="width: 150px">
+    <q-btn :loading="loading[3]" color="primary" @click="atualizarIframe" style="width: 150px">
       Button
       <template v-slot:loading>
         <q-spinner-hourglass :class="{ 'on-left': loading[3] }" />
