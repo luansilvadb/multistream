@@ -1,4 +1,4 @@
-# SorakaFlix
+# Multi Stream
 
 ![SorakaFlix](https://i.imgur.com/rK5zeVB.png)
 

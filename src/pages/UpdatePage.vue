@@ -32,26 +32,44 @@ export default {
     return {
       updates: [
         {
+          version: 'v1.0.7',
+          date: '11 Outubro, 2023',
+          shortNotes: 'Responsividade',
+          notes: 'Interface adaptada a todos dispositivos'
+        },
+        {
+          version: 'v1.0.6',
+          date: '11 Outubro, 2023',
+          shortNotes: 'Botão FullScreen',
+          notes: 'Adicionado Botão de FullScreen'
+        },
+        {
+          version: 'v1.0.5',
+          date: '11 Outubro, 2023',
+          shortNotes: 'Botão Sincronizar',
+          notes: 'Adicionado Botão de Sincronizar com base a hora atual'
+        },
+        {
           version: 'v1.0.4',
-          date: '08 Julho, 2023',
-          shortNotes: 'BUG darkmode',
-          notes: 'Corrigido bug dark mode, quando alternava o video sumia'
+          date: '11 Outubro, 2023',
+          shortNotes: 'BUG Dark Mode',
+          notes: 'Corrigido bug dark mode, quando alternava o video desaparecia'
         },
         {
           version: 'v1.0.3',
-          date: '02 Julho, 2023',
+          date: '11 Outubro, 2023',
           shortNotes: 'Player',
-          notes: 'Adicionado Border Radius no Player'
+          notes: 'Adicionado Border Radius nos Player'
         },
         {
           version: 'v1.0.2',
-          date: '11 Julho, 2023',
+          date: '11 Outubro, 2023',
           shortNotes: 'Ajustado Dark Mode',
           notes: 'Adicionado transição do Dark Mode'
         },
         {
           version: 'v1.0.1',
-          date: '10 Junho, 2023',
+          date: '10 Outubro, 2023',
           shortNotes: 'Integração com a Twitch',
           notes: 'Adicionado a integração com a twitch player e chat'
         },
