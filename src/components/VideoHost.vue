@@ -2,7 +2,7 @@
   <div class="videohost">
     <q-video
       :ratio="16/9"
-      src="https://player.twitch.tv/?channel=daniels&parent=embed.example.com&muted=true" frameborder="0" allowfullscreen="true" scrolling="no" height="378" width="620"
+      src="https://player.twitch.tv/?channel=daniels&parent=multistream-ten.vercel.app&muted=true" frameborder="0" allowfullscreen="true" scrolling="no" height="378" width="620"
     />
   </div>
 </template>
