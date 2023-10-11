@@ -22,7 +22,9 @@ export default {
 .chat {
   grid-area: 4 / 2 / 4 / 3;
   width: 100%; /* Largura total em telas menores */
-  height: 35vh; /* Altura automática para ajustar o conteúdo */
+  height: 200%; /* Altura automática para ajustar o conteúdo */
+  margin: 0px;
+
 }
 
 /* Estilo para telas menores */

@@ -9,13 +9,12 @@
 <script>
 import VideoPrincipal from './VideoPrincipal.vue'
 import VideoHost from './VideoHost.vue'
-import Chat from './Chat.vue'
 
 export default {
   components: {
     VideoPrincipal,
-    VideoHost,
-    Chat
+    VideoHost
+
   }
 }
 </script>
@@ -23,8 +22,8 @@ export default {
 <style scoped>
 .container {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: auto 1.2fr 1.2fr; /* Ajustei a primeira linha para 'auto' */
+  grid-template-columns: 1fr 0.5fr;
+  grid-template-rows: 0fr 1.2fr 1.2fr; /* Ajustei a primeira linha para 'auto' */
   gap: 0px 0px;
   grid-auto-flow: row;
 }
