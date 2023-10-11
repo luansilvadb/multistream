@@ -15,8 +15,10 @@
           <q-btn dense flat round icon="dark_mode" @click="toggleDarkMode" ><q-tooltip>
           Tema
         </q-tooltip> </q-btn>
-
-          <q-btn flat round dense :icon="fullscreenIcon" @click="toggleFullscreen" />
+          <q-btn flat round dense :icon="fullscreenIcon" @click="toggleFullscreen"><q-tooltip>
+          Full screen
+        </q-tooltip></q-btn>
+        <q-space />
         </q-toolbar>
       </q-header>
 
