@@ -2,7 +2,7 @@
   <div class="videoprincipal">
     <q-video
       :ratio="16/9"
-      src="https://www.youtube.com/embed/7_syiuTRfvk?si=zBun4GxnmxAwGATE"
+      src="https://player.twitch.tv/?channel=baiano&parent=multistream-ten.vercel.app&muted=true"
     />
   </div>
 </template>
