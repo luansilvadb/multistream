@@ -1,10 +1,14 @@
 <!-- eslint-disable vue/multi-word-component-names -->
 <template>
   <div class="chat">
-    <q-video
-      :ratio="16/9"
+    <iframe
       src="https://www.twitch.tv/embed/daniels/chat?parent=multistream-ten.vercel.app"
-    />
+      frameborder="0"
+      allowfullscreen="true"
+      scrolling="yes"
+      width="100%"
+      height="100%"
+    ></iframe>
   </div>
 </template>
 
@@ -16,10 +20,9 @@ export default {
 
 <style scoped>
 .chat {
-  grid-area: 3 / 2 / 4 / 3;
+  grid-area: 4 / 2 / 4 / 3;
   width: 100%; /* Largura total em telas menores */
-  height: 100%; /* Altura total em relação ao contêiner pai */
-  overflow: auto; /* Adiciona uma barra de rolagem se o conteúdo ultrapassar a altura visível */
+  height: 100vh; /* Altura automática para ajustar o conteúdo */
 }
 
 /* Estilo para telas menores */
