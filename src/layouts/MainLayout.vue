@@ -7,18 +7,27 @@
           <q-toolbar-title class="toolbar-title">
             <router-link :to="{ path: '/' }" class="router-link" @mouseover="hover = true" @mouseleave="hover = false">
               <q-avatar>
-                <img src="../assets/logo-main.png" />
+                <q-img src="../assets/logo-main.png" />
               </q-avatar>
               <b :style="{ color: getColor() }">Daniels</b>
             </router-link>
+
           </q-toolbar-title>
-          <q-btn dense flat round icon="dark_mode" @click="toggleDarkMode" ><q-tooltip>
+
+          <a href="https://www.rivalry.com/pt" target="_blank" class="icon-link">
+          <q-btn @click="handleButtonClick" class="icon-button">
+            <img src="../assets/rivalry.svg" alt="Seu Ícone" />
+          </q-btn>
+        </a>
+
+        <q-space />
+        <q-btn dense flat round icon="dark_mode" @click="toggleDarkMode" ><q-tooltip>
           Tema
-        </q-tooltip> </q-btn>
-          <q-btn flat round dense :icon="fullscreenIcon" @click="toggleFullscreen"><q-tooltip>
+            </q-tooltip> </q-btn>
+            <q-btn flat round dense :icon="fullscreenIcon" @click="toggleFullscreen"><q-tooltip>
           Full screen
         </q-tooltip></q-btn>
-        <q-space />
+
         </q-toolbar>
       </q-header>
 
@@ -72,6 +81,8 @@
 <script setup>
 import { ref, computed } from 'vue'
 import { useQuasar } from 'quasar'
+// eslint-disable-next-line no-unused-vars
+import SeuIconeSvg from 'src/assets/rivalry.svg'
 
 const drawer = ref(false)
 const miniState = ref(true)
@@ -170,5 +181,10 @@ const toggleFullscreen = () => {
 .bg-dark,
 .bg-white {
   transition: background-color 0.5s ease, color 0.5s ease;
+}
+.icon-button img {
+
+  height: 40px; /* Ajuste o tamanho conforme necessário */
+  padding-top: 5px;
 }
 </style>
