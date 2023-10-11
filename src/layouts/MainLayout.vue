@@ -36,7 +36,7 @@
         </q-scroll-area>
       </q-drawer>
 
-      <q-drawer show-if-above v-model="rightDrawerOpen" side="right" width="340"
+      <q-drawer show-if-above v-model="rightDrawerOpen"  side="right" width="1"
       :class="[$q.dark.isActive ? 'bg-dark text-white' : 'bg-white text-dark']">
         <div
           style="position: relative; height: 21.5%; width: 100%; display: flex; align-items: center; justify-content: center;">
@@ -69,7 +69,7 @@ import { useQuasar } from 'quasar'
 
 const drawer = ref(false)
 const miniState = ref(true)
-const rightDrawerOpen = ref(false)
+// const rightDrawerOpen = ref(false)
 const iframeLoadingDark = ref(true)
 const iframeLoadingLight = ref(true)
 const iframeLoadingTheme = ref('dark') // Padrão para o tema escuro
@@ -85,21 +85,21 @@ const menuList = [
   }
 ]
 
-const getIframeLoading = computed(() => {
-  return iframeLoadingTheme.value === 'dark' ? iframeLoadingDark.value : iframeLoadingLight.value
-})
+// const getIframeLoading = computed(() => {
+//   return iframeLoadingTheme.value === 'dark' ? iframeLoadingDark.value : iframeLoadingLight.value
+// })
 
-const getVideoSrc = computed(() => {
-  return $q.dark.isActive
-    ? 'https://player.twitch.tv/?channel=daniels&parent=multistream-ten.vercel.app&darkpopout'
-    : 'https://player.twitch.tv/?channel=daniels&parent=multistream-ten.vercel.app'
-})
+// const getVideoSrc = computed(() => {
+//   return $q.dark.isActive
+//     ? 'https://player.twitch.tv/?channel=daniels&parent=multistream-ten.vercel.app&darkpopout'
+//     : 'https://player.twitch.tv/?channel=daniels&parent=multistream-ten.vercel.app'
+// })
 
-const getChatSrc = computed(() => {
-  return $q.dark.isActive
-    ? 'https://www.twitch.tv/embed/daniels/chat?parent=multistream-ten.vercel.app&darkpopout'
-    : 'https://www.twitch.tv/embed/daniels/chat?parent=multistream-ten.vercel.app'
-})
+// const getChatSrc = computed(() => {
+//   return $q.dark.isActive
+//     ? 'https://www.twitch.tv/embed/daniels/chat?parent=multistream-ten.vercel.app&darkpopout'
+//     : 'https://www.twitch.tv/embed/daniels/chat?parent=multistream-ten.vercel.app'
+// })
 
 const toggleDrawer = () => {
   drawer.value = !drawer.value
@@ -129,7 +129,10 @@ const getColor = () => {
   if (hover.value) return '#1976D2'
   return $q.dark.isActive ? 'white' : 'black'
 }
-
+// eslint-disable-next-line no-unused-vars
+const isMobile = computed(() => {
+  return $q.screen.width <= 500 // Defina o valor conforme necessário
+})
 </script>
 
 <style scoped>
