@@ -1,24 +1,52 @@
 <template>
   <div class="videohost">
-    <q-video
-      :ratio="16/9"
-      src="https://player.twitch.tv/?channel=daniels&parent=multistream-ten.vercel.app&muted=true" frameborder="0" allowfullscreen="true" scrolling="no" height="378" width="620"
-    />
-    <iframe class="chat"
-      src="https://www.twitch.tv/embed/daniels/chat?parent=multistream-ten.vercel.app"
-      frameborder="0"
-      allowfullscreen="true"
-      scrolling="yes"
-      width="100%"
-      height="100%"
-    ></iframe>
+    <iframe :src="getVideoSrc" height="100%" width="100%" frameborder="0" scrolling="no"
+            style="border: none;" v-show="!getIframeLoading">
+          </iframe>
+          <iframe frameborder="0" scrolling="no" id="chat_embed" :src="getChatSrc" @load="iframeLoaded" height="100%"
+            width="100%" style="border: none;" v-show="!getIframeLoading">
+          </iframe>
   </div>
 </template>
 
-<script>
-export default {
-  // Adicione opções específicas se necessário
+<script setup>
+import { ref, computed } from 'vue'
+import { useQuasar } from 'quasar'
+
+// const rightDrawerOpen = ref(false)
+const iframeLoadingDark = ref(true)
+const iframeLoadingLight = ref(true)
+const iframeLoadingTheme = ref('dark') // Padrão para o tema escuro
+const $q = useQuasar()
+
+const getIframeLoading = computed(() => {
+  return iframeLoadingTheme.value === 'dark' ? iframeLoadingDark.value : iframeLoadingLight.value
+})
+
+const getVideoSrc = computed(() => {
+  return $q.dark.isActive
+    ? 'https://player.twitch.tv/?channel=daniels&parent=multistream-ten.vercel.app&darkpopout'
+    : 'https://player.twitch.tv/?channel=daniels&parent=multistream-ten.vercel.app'
+})
+
+const getChatSrc = computed(() => {
+  return $q.dark.isActive
+    ? 'https://www.twitch.tv/embed/daniels/chat?parent=multistream-ten.vercel.app&darkpopout'
+    : 'https://www.twitch.tv/embed/daniels/chat?parent=multistream-ten.vercel.app'
+})
+
+const iframeLoaded = () => {
+  if (iframeLoadingTheme.value === 'dark') {
+    iframeLoadingDark.value = false
+  } else {
+    iframeLoadingLight.value = false
+  }
 }
+
+// eslint-disable-next-line no-unused-vars
+const isMobile = computed(() => {
+  return $q.screen.width <= 500 // Defina o valor conforme necessário
+})
 </script>
 
 <style scoped>
