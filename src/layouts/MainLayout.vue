@@ -9,7 +9,7 @@
               <q-avatar>
                 <img src="../assets/logo-main.png" />
               </q-avatar>
-              <b :style="{ color: getColor() }">SorakaFlix</b>
+              <b :style="{ color: getColor() }">Daniels</b>
             </router-link>
           </q-toolbar-title>
           <q-btn dense flat round icon="dark_mode" @click="toggleDarkMode" />

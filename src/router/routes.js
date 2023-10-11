@@ -1,10 +1,10 @@
 const routes = [
   {
     path: '/',
-    name: 'SorakaFlix',
+    name: 'Daniels',
     component: () => import('layouts/MainLayout.vue'),
     meta: {
-      title: 'SorakaFlix'
+      title: 'Daniels'
     },
     children: [
       { path: '', component: () => import('pages/IndexPage.vue') },
