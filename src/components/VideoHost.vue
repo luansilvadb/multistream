@@ -31,8 +31,8 @@ const getIframeLoading = computed(() => {
 
 const getVideoSrc = computed(() => {
   return $q.dark.isActive
-    ? 'https://player.twitch.tv/?channel=daniels&parent=multistream-ten.vercel.app&darkpopout'
-    : 'https://player.twitch.tv/?channel=daniels&parent=multistream-ten.vercel.app'
+    ? 'https://player.twitch.tv/?channel=daniels&parent=daniels-ten.vercel.app&darkpopout'
+    : 'https://player.twitch.tv/?channel=daniels&parent=daniels-ten.vercel.app'
 })
 
 const getChatSrc = computed(() => {
