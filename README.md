@@ -1,6 +1,6 @@
 # Multi Stream
 
-![Multi Stream](https://i.imgur.com/rK5zeVB.png)
+![Multi Stream](https://i.imgur.com/ibpSd1D.png)
 
 ## Sobre o Projeto
 
