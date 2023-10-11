@@ -18,7 +18,8 @@ export default {
 .chat {
   grid-area: 3 / 2 / 4 / 3;
   width: 100%; /* Largura total em telas menores */
-  height: auto; /* Altura automática para ajustar o conteúdo */
+  height: 100%; /* Altura total em relação ao contêiner pai */
+  overflow: auto; /* Adiciona uma barra de rolagem se o conteúdo ultrapassar a altura visível */
 }
 
 /* Estilo para telas menores */
