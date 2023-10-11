@@ -1,13 +1,18 @@
 <template>
   <div class="videohost">
-    <iframe :src="getVideoSrc"  height="50%" width="100%" frameborder="0" scrolling="no"
-            :style="{ border: 'none', borderRadius: '10px' }" v-show="!getIframeLoading" >
-          </iframe>
-          <iframe frameborder="0" scrolling="no" id="chat" :src="getChatSrc" @load="iframeLoaded" height="480px"
-          :style="{ border: 'none', borderRadius: '10px' }"
-            width="100%" style="border: none;" v-show="!getIframeLoading">
+    <q-video
+      :ratio="16/9"
+      :style="{ border: 'none', borderRadius: '10px' }"
+      :src="getVideoSrc"
+    />
+  <div>
+          <iframe  :src="getChatSrc" @load="iframeLoaded" height="480px"
+          :style="{ border: 'none', paddingLeft:'1px',paddingTop:'10px', borderRadius:'10px' }"
+            width="100%" v-show="!getIframeLoading">
           </iframe>
   </div>
+
+</div>
 </template>
 
 <script setup>
@@ -56,6 +61,9 @@ const isMobile = computed(() => {
   width: 100%; /* Largura total em telas menores */
   height: auto; /* Altura automática para ajustar o conteúdo */
   margin: 0;
+  padding-top: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
 }
 
 /* Estilo para telas menores */
