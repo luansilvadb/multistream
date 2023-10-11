@@ -6,13 +6,13 @@
       :src="videoSrc"
     />
     <div class="sincronizar">
-    <q-btn :style="{ border: 'none', borderRadius: '10px' }" :loading="loading[3]" color="blue" @click="onButtonClick" style="width: 150px">
+    <!-- <q-btn :style="{ border: 'none', borderRadius: '10px' }" :loading="loading[3]" color="blue" @click="onButtonClick" style="width: 150px">
       Sincronizar
       <template v-slot:loading>
         <q-spinner-hourglass :class="{ 'on-left': loading[3] }" />
         aguarde...
       </template>
-    </q-btn>
+    </q-btn> -->
   </div>
   </div>
 </template>
