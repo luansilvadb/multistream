@@ -24,7 +24,7 @@ export default {
   display: grid;
   grid-template-columns: 1fr 0.5fr;
   grid-template-rows: 0fr 1.2fr 1.2fr; /* Ajustei a primeira linha para 'auto' */
-  gap: 0px 0px;
+  gap: 0px 10px;
   grid-auto-flow: row;
 }
 

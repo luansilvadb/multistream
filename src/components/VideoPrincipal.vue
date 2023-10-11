@@ -2,6 +2,7 @@
   <div class="videoprincipal">
     <q-video
       :ratio="16/9"
+      :style="{ border: 'none', borderRadius: '10px' }"
       src="https://player.twitch.tv/?channel=baiano&parent=multistream-ten.vercel.app&muted=true"
     />
   </div>

@@ -12,7 +12,15 @@
               <b :style="{ color: getColor() }">Daniels</b>
             </router-link>
           </q-toolbar-title>
-          <q-btn dense flat round icon="dark_mode" @click="toggleDarkMode" />
+          <q-btn dense flat round icon="dark_mode" @click="toggleDarkMode" ><q-tooltip>
+          Tema
+        </q-tooltip> </q-btn>
+          <q-btn flat round dense icon="more_vert" />
+          <q-btn flat round dense icon="more_vert" />
+          <q-btn flat round dense icon="more_vert" />
+          <q-btn flat round dense icon="more_vert" />
+          <q-btn flat round dense icon="more_vert" />
+          <q-btn flat round dense icon="more_vert" />
         </q-toolbar>
       </q-header>
 

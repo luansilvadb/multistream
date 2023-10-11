@@ -32,47 +32,35 @@ export default {
     return {
       updates: [
         {
-          version: 'v1.0.6',
+          version: 'v1.0.4',
           date: '08 Julho, 2023',
           shortNotes: 'BUG darkmode',
           notes: 'Corrigido bug dark mode, quando alternava o video sumia'
         },
         {
-          version: 'v1.0.5',
+          version: 'v1.0.3',
           date: '02 Julho, 2023',
           shortNotes: 'Player',
           notes: 'Adicionado Border Radius no Player'
         },
         {
-          version: 'v1.0.4',
-          date: '02 Julho, 2023',
+          version: 'v1.0.2',
+          date: '11 Julho, 2023',
           shortNotes: 'Ajustado Dark Mode',
           notes: 'Adicionado transição do Dark Mode'
         },
         {
-          version: 'v1.0.3',
-          date: '26 Junho, 2023',
-          shortNotes: 'Ajustamos volume de video',
-          notes: 'Ajustamos o volume inicial para 20%'
-        },
-        {
-          version: 'v1.0.2',
-          date: '25 Junho, 2023',
-          shortNotes: 'Adicionamos serviço RTMP',
-          notes: 'Adicionamos o serviço RTMP hospedado em Cloud para melhor experiência'
-        },
-        {
           version: 'v1.0.1',
-          date: '22 Junho, 2023',
+          date: '10 Junho, 2023',
           shortNotes: 'Integração com a Twitch',
-          notes: 'Adicionamos a integração com video e chat da twitch'
+          notes: 'Adicionado a integração com a twitch player e chat'
         },
 
         {
           version: 'v1.0.0',
-          date: '20 Junho, 2023',
+          date: '10 Outubro, 2023',
           shortNotes: 'Lançamento inicial.',
-          notes: 'Esta é a nossa primeira versão. Inclui recursos básicos, menu, cor do tema, layout.'
+          notes: 'Esta é a primeira versão. Inclui recursos básicos, menu, cor do tema, layout.'
         }
         // adicione mais notas de atualizações conforme necessário
       ]
