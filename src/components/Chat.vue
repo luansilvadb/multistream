@@ -3,7 +3,7 @@
   <div class="chat">
     <q-video
       :ratio="16/9"
-      src="https://www.youtube.com/embed/1La4QzGeaaQ?si=qZDYSzAwiqlBVvgX"
+      src="https://www.twitch.tv/embed/daniels/chat?parent=multistream-ten.vercel.app"
     />
   </div>
 </template>

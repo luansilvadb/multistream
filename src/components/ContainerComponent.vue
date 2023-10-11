@@ -26,7 +26,7 @@ export default {
 <style scoped>
 .container {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1.5fr 1fr;
   grid-template-rows: 0px 1.2fr 1.2fr;
   gap: 0px 0px;
   grid-auto-flow: row;
