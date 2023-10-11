@@ -5,17 +5,46 @@
       :style="{ border: 'none', borderRadius: '10px' }"
       :src="videoSrc"
     />
-    <button @click="atualizarIframe">Atualizar Twitch</button>
+    <q-btn :loading="loading[3]" color="primary" @click="simulateProgress(3)" style="width: 150px">
+      Button
+      <template v-slot:loading>
+        <q-spinner-hourglass :class="{ 'on-left': loading[3] }" />
+        Loading...
+      </template>
+    </q-btn>
   </div>
 </template>
 
 <script>
+import { ref } from 'vue'
+
 export default {
+  setup () {
+    const loading = ref([false, false, false, false, false, false])
+
+    function simulateProgress (number) {
+      // Definimos o estado de carregamento
+      loading.value[number] = true
+
+      // Simulamos um atraso
+      setTimeout(() => {
+        // Terminamos, redefinimos o estado de carregamento
+        loading.value[number] = false
+      }, 3000)
+    }
+
+    return {
+      loading,
+      simulateProgress
+    }
+  },
+
   data () {
     return {
       videoSrc: 'https://player.twitch.tv/?channel=baiano&parent=multistream-ten.vercel.app&muted=true'
     }
   },
+
   methods: {
     atualizarIframe () {
       // Atualizar a URL do iframe
