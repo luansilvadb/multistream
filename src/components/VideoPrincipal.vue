@@ -5,13 +5,15 @@
       :style="{ border: 'none', borderRadius: '10px' }"
       :src="videoSrc"
     />
-    <q-btn :loading="loading[3]" color="primary" @click="onButtonClick" style="width: 150px">
-      Button
+    <div class="sincronizar">
+    <q-btn :style="{ border: 'none', borderRadius: '10px' }" :loading="loading[3]" color="blue-grey" @click="onButtonClick" style="width: 150px">
+      Sincronizar
       <template v-slot:loading>
         <q-spinner-hourglass :class="{ 'on-left': loading[3] }" />
-        Loading...
+        aguarde...
       </template>
     </q-btn>
+  </div>
   </div>
 </template>
 
@@ -63,6 +65,10 @@ export default {
   height: auto;
   max-width: auto;
   padding-left: 10px;
+}
+.sincronizar{
+  padding-top: 10px;
+  margin-inline-start: 42%;
 }
 
 @media screen and (max-width: 768px) {

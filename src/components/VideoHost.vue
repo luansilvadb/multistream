@@ -3,7 +3,7 @@
     <iframe :src="getVideoSrc"  height="50%" width="100%" frameborder="0" scrolling="no"
             :style="{ border: 'none', borderRadius: '10px' }" v-show="!getIframeLoading" >
           </iframe>
-          <iframe frameborder="0" scrolling="no" id="chat" :src="getChatSrc" @load="iframeLoaded" height="490px"
+          <iframe frameborder="0" scrolling="no" id="chat" :src="getChatSrc" @load="iframeLoaded" height="480px"
           :style="{ border: 'none', borderRadius: '10px' }"
             width="100%" style="border: none;" v-show="!getIframeLoading">
           </iframe>
