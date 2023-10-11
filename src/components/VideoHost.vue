@@ -1,9 +1,9 @@
 <template>
   <div class="videohost">
-    <iframe :src="getVideoSrc" height="100%" width="100%" frameborder="0" scrolling="no"
+    <iframe :src="getVideoSrc" height="50%" width="100%" frameborder="0" scrolling="no"
             style="border: none;" v-show="!getIframeLoading">
           </iframe>
-          <iframe frameborder="0" scrolling="no" id="chat_embed" :src="getChatSrc" @load="iframeLoaded" height="100%"
+          <iframe frameborder="0" scrolling="no" id="chat" :src="getChatSrc" @load="iframeLoaded" height="480px"
             width="100%" style="border: none;" v-show="!getIframeLoading">
           </iframe>
   </div>
@@ -55,9 +55,6 @@ const isMobile = computed(() => {
   width: 100%; /* Largura total em telas menores */
   height: auto; /* Altura automática para ajustar o conteúdo */
   margin: 0;
-}
-.chat{
-max-height: 490px;
 }
 
 /* Estilo para telas menores */
