@@ -1,10 +1,10 @@
 # Multi Stream
 
-![SorakaFlix](https://i.imgur.com/rK5zeVB.png)
+![Multi Stream](https://i.imgur.com/rK5zeVB.png)
 
 ## Sobre o Projeto
 
-SorakaFlix é um serviço de streaming que permite aos usuários assistirem a uma variedade de filmes, séries e documentários, utilizando a tecnologia de video RTMP, não transmitindo diretamente na Twitch por conta do DMCA
+Multi Stream é uma plataforma para fazer CoStream
 
 ## Contribuindo
 
