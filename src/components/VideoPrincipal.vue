@@ -19,7 +19,6 @@ export default {
   width: 100%; /* Largura total em telas menores */
   height: auto; /* Altura automática para ajustar o conteúdo */
   max-width: auto;
-
 }
 
 /* Estilo para telas menores */
