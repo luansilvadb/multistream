@@ -18,7 +18,7 @@ export default {
   grid-area: 2 / 1 / 4 / 2;
   width: 100%; /* Largura total em telas menores */
   height: auto; /* Altura automática para ajustar o conteúdo */
-  max-width: 1172px;
+  max-width: auto;
 }
 
 /* Estilo para telas menores */
