@@ -39,23 +39,12 @@
         </q-scroll-area>
       </q-drawer>
 
-      <q-drawer show-if-above v-model="rightDrawerOpen" side="right" width="1" :class="drawerClasses">
-        <div style="position: relative; height: 21.5%; width: 100%; display: flex; align-items: center; justify-content: center;">
-        <q-spinner v-if="getIframeLoading" :color="iframeSpinnerColor" size="7em" />
-        <iframe v-if="!getIframeLoading" :src="getVideoSrc" height="100%" width="100%" frameborder="0" scrolling="no" style="border: none;"></iframe>
-      </div>
-
-      <div style="position: relative; height: 78.5%; width: 100%; display: flex; align-items: center; justify-content: center;">
-        <q-spinner v-if="getIframeLoading" :color="iframeSpinnerColor" size="7em" />
-        <iframe v-if="!getIframeLoading" frameborder="0" scrolling="no" :src="getChatSrc" @load="iframeLoaded" height="100%" width="100%" style="border: none;"></iframe>
-      </div>
-      </q-drawer>
-
       <q-page-container :class="[$q.dark.isActive ? 'bg-dark text-white' : 'bg-white text-dark']">
         <router-view />
       </q-page-container>
 
     </q-layout>
+    <q-skeleton v-if="isLoading" />
   </div>
 </template>
 
@@ -64,8 +53,6 @@ import { ref, computed } from 'vue'
 import { useQuasar } from 'quasar'
 
 const layoutClasses = computed(() => [$q.dark.isActive ? 'bg-dark text-white' : 'bg-white text-dark'])
-const drawerClasses = computed(() => [$q.dark.isActive ? 'bg-dark text-white' : 'bg-white text-dark'])
-const iframeSpinnerColor = computed(() => $q.dark.isActive ? 'white' : 'primary')
 const drawer = ref(false)
 const miniState = ref(true)
 const iframeLoadingDark = ref(true)
@@ -109,6 +96,12 @@ const toggleFullscreen = () => {
     })
     isFullscreen.value = true
   }
+  const isLoading = ref(true)
+
+  // Simular um atraso de carregamento
+  setTimeout(() => {
+    isLoading.value = false
+  }, 2000) // Tempo de atraso em milissegundos (pode ajustar conforme necessário)
 }
 
 </script>
