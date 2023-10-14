@@ -6,28 +6,16 @@
           <q-btn dense flat round icon="menu" @click="toggleDrawer" />
           <q-toolbar-title class="toolbar-title">
             <router-link :to="{ path: '/' }" class="router-link" @mouseover="hover = true" @mouseleave="hover = false">
-              <q-avatar>
-                <q-img src="../assets/logo-main.png" />
-              </q-avatar>
-              <b  :style="{ color: getColor() }">Daniels</b>
+              <q-avatar><q-img src="../assets/logo-main.png" /></q-avatar>
+              <b :class="{ 'transition-color': true }" :style="{ color: getColor() }">Daniels</b>
             </router-link>
-
           </q-toolbar-title>
-
           <a href="https://www.rivalry.com/pt" target="_blank" class="icon-link">
-          <q-btn @click="handleButtonClick" class="icon-button">
-            <img src="../assets/rivalry.svg" alt="Seu Ícone" />
-          </q-btn>
-        </a>
-
-        <q-space />
-        <q-btn flat round dense :icon="fullscreenIcon" @click="toggleFullscreen"><q-tooltip>
-          Full screen
-        </q-tooltip></q-btn>
-        <q-btn dense flat round icon="dark_mode" @click="toggleDarkMode" ><q-tooltip>
-          Tema
-            </q-tooltip> </q-btn>
-
+            <q-btn @click="handleButtonClick" class="icon-button"><img src="../assets/rivalry.svg" alt="Seu Ícone" /></q-btn>
+          </a>
+          <q-space />
+          <q-btn flat round dense :icon="fullscreenIcon" @click="toggleFullscreen"><q-tooltip>Full screen</q-tooltip></q-btn>
+          <q-btn dense flat round icon="dark_mode" @click="toggleDarkMode"><q-tooltip>Tema</q-tooltip></q-btn>
         </q-toolbar>
       </q-header>
 
@@ -81,78 +69,37 @@
 <script setup>
 import { ref, computed } from 'vue'
 import { useQuasar } from 'quasar'
-// eslint-disable-next-line no-unused-vars
-import SeuIconeSvg from 'src/assets/rivalry.svg'
 
 const drawer = ref(false)
 const miniState = ref(true)
-// const rightDrawerOpen = ref(false)
 const iframeLoadingDark = ref(true)
 const iframeLoadingLight = ref(true)
 const iframeLoadingTheme = ref('dark') // Padrão para o tema escuro
 const $q = useQuasar()
 
 const menuList = [
-
-  {
-    icon: 'help',
-    label: 'Versão',
-    separator: false,
-    route: '/atualizacao'
-  }
+  { icon: 'help', label: 'Versão', separator: false, route: '/atualizacao' }
 ]
 
-// const getIframeLoading = computed(() => {
-//   return iframeLoadingTheme.value === 'dark' ? iframeLoadingDark.value : iframeLoadingLight.value
-// })
-
-// const getVideoSrc = computed(() => {
-//   return $q.dark.isActive
-//     ? 'https://player.twitch.tv/?channel=daniels&parent=multistream-ten.vercel.app&darkpopout'
-//     : 'https://player.twitch.tv/?channel=daniels&parent=multistream-ten.vercel.app'
-// })
-
-// const getChatSrc = computed(() => {
-//   return $q.dark.isActive
-//     ? 'https://www.twitch.tv/embed/daniels/chat?parent=multistream-ten.vercel.app&darkpopout'
-//     : 'https://www.twitch.tv/embed/daniels/chat?parent=multistream-ten.vercel.app'
-// })
-
-const toggleDrawer = () => {
-  drawer.value = !drawer.value
-}
-
+const toggleDrawer = () => { drawer.value = !drawer.value }
 const toggleDarkMode = () => {
   $q.dark.toggle()
   iframeLoadingTheme.value = $q.dark.isActive ? 'dark' : 'light'
   iframeLoadingDark.value = true
   iframeLoadingLight.value = true
-  $q.nextTick(() => {
-    iframeLoaded()
-  })
+  $q.nextTick(() => iframeLoaded())
 }
 
 const iframeLoaded = () => {
-  if (iframeLoadingTheme.value === 'dark') {
-    iframeLoadingDark.value = false
-  } else {
-    iframeLoadingLight.value = false
-  }
+  iframeLoadingTheme.value === 'dark' ? iframeLoadingDark.value = false : iframeLoadingLight.value = false
 }
 
 const hover = ref(false)
 
-const getColor = () => {
-  if (hover.value) return '#FF6700'
-  return $q.dark.isActive ? 'white' : 'black'
-}
-// eslint-disable-next-line no-unused-vars
-const isMobile = computed(() => {
-  return $q.screen.width <= 500 // Defina o valor conforme necessário
-})
+const getColor = () => hover.value ? '#FF6700' : $q.dark.isActive ? 'white' : 'black'
 const isFullscreen = ref(false)
 
-const fullscreenIcon = computed(() => (isFullscreen.value ? 'fullscreen_exit' : 'fullscreen'))
+const fullscreenIcon = computed(() => isFullscreen.value ? 'fullscreen_exit' : 'fullscreen')
 
 const toggleFullscreen = () => {
   const element = document.documentElement
@@ -170,22 +117,9 @@ const toggleFullscreen = () => {
 </script>
 
 <style scoped>
-.router-link {
-  text-decoration: none;
-}
-
-.router-link:hover {
-  cursor: pointer !important;
-}
-
-.bg-dark,
-.bg-white {
-  transition: background-color 0.5s ease, color 0.5s ease;
-}
-
-.icon-button img {
-
-  height: 40px; /* Ajuste o tamanho conforme necessário */
-  padding-top: 5px;
-}
+.router-link { text-decoration: none; }
+.router-link:hover { cursor: pointer !important; }
+.bg-dark, .bg-white { transition: background-color 0.5s ease, color 0.5s ease; }
+.transition-color { transition: color 0.5s ease; }
+.icon-button img { height: 40px; padding-top: 5px; }
 </style>
