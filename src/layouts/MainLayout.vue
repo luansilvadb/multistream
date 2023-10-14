@@ -9,7 +9,7 @@
               <q-avatar>
                 <q-img src="../assets/logo-main.png" />
               </q-avatar>
-              <b :class="{ 'transition-color': true }" :style="{ color: getColor() }">Daniels</b>
+              <b  :style="{ color: getColor() }">Daniels</b>
             </router-link>
 
           </q-toolbar-title>
@@ -182,9 +182,7 @@ const toggleFullscreen = () => {
 .bg-white {
   transition: background-color 0.5s ease, color 0.5s ease;
 }
-.transition-color {
-  transition: color 0.5s ease;
-}
+
 .icon-button img {
 
   height: 40px; /* Ajuste o tamanho conforme necessário */
