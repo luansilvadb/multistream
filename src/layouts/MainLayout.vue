@@ -1,5 +1,6 @@
 <template>
   <div :class="layoutClasses">
+    <q-skeleton v-if="isLoading" />
     <q-layout view="hhh LpR fFf" :class="[$q.dark.isActive ? 'bg-dark text-white' : 'bg-white text-dark']">
       <q-header :class="[$q.dark.isActive ? 'bg-dark text-white' : 'bg-white text-dark']">
         <q-toolbar :class="[$q.dark.isActive ? 'bg-dark text-white' : 'bg-white text-dark']">
@@ -44,7 +45,7 @@
       </q-page-container>
 
     </q-layout>
-    <q-skeleton v-if="isLoading" />
+
   </div>
 </template>
 
