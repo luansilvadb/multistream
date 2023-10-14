@@ -1,6 +1,5 @@
 <template>
   <div :class="layoutClasses">
-    <q-skeleton v-if="isLoading" />
     <q-layout view="hhh LpR fFf" :class="[$q.dark.isActive ? 'bg-dark text-white' : 'bg-white text-dark']">
       <q-header :class="[$q.dark.isActive ? 'bg-dark text-white' : 'bg-white text-dark']">
         <q-toolbar :class="[$q.dark.isActive ? 'bg-dark text-white' : 'bg-white text-dark']">
@@ -45,7 +44,6 @@
       </q-page-container>
 
     </q-layout>
-
   </div>
 </template>
 
@@ -97,12 +95,6 @@ const toggleFullscreen = () => {
     })
     isFullscreen.value = true
   }
-  const isLoading = ref(true)
-
-  // Simular um atraso de carregamento
-  setTimeout(() => {
-    isLoading.value = false
-  }, 2000) // Tempo de atraso em milissegundos (pode ajustar conforme necessário)
 }
 
 </script>
