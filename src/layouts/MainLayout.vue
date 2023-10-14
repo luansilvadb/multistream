@@ -1,5 +1,5 @@
 <template>
-  <div :class="[$q.dark.isActive ? 'bg-dark text-white' : 'bg-white text-dark']">
+  <div :class="layoutClasses">
     <q-layout view="hhh LpR fFf" :class="[$q.dark.isActive ? 'bg-dark text-white' : 'bg-white text-dark']">
       <q-header :class="[$q.dark.isActive ? 'bg-dark text-white' : 'bg-white text-dark']">
         <q-toolbar :class="[$q.dark.isActive ? 'bg-dark text-white' : 'bg-white text-dark']">
@@ -39,23 +39,16 @@
         </q-scroll-area>
       </q-drawer>
 
-      <q-drawer show-if-above v-model="rightDrawerOpen"  side="right" width="1"
-      :class="[$q.dark.isActive ? 'bg-dark text-white' : 'bg-white text-dark']">
-        <div
-          style="position: relative; height: 21.5%; width: 100%; display: flex; align-items: center; justify-content: center;">
-          <q-spinner v-if="getIframeLoading" :color="$q.dark.isActive ? 'white' : 'primary'" size="7em" />
-          <iframe id="video_embed" :src="getVideoSrc" height="100%" width="100%" frameborder="0" scrolling="no"
-            style="border: none;" v-show="!getIframeLoading">
-          </iframe>
-        </div>
+      <q-drawer show-if-above v-model="rightDrawerOpen" side="right" width="1" :class="drawerClasses">
+        <div style="position: relative; height: 21.5%; width: 100%; display: flex; align-items: center; justify-content: center;">
+        <q-spinner v-if="getIframeLoading" :color="iframeSpinnerColor" size="7em" />
+        <iframe v-if="!getIframeLoading" :src="getVideoSrc" height="100%" width="100%" frameborder="0" scrolling="no" style="border: none;"></iframe>
+      </div>
 
-        <div
-          style="position: relative; height: 78.5%; width: 100%; display: flex; align-items: center; justify-content: center;">
-          <q-spinner v-if="getIframeLoading" :color="$q.dark.isActive ? 'white' : 'primary'" size="7em" />
-          <iframe frameborder="0" scrolling="no" id="chat_embed" :src="getChatSrc" @load="iframeLoaded" height="100%"
-            width="100%" style="border: none;" v-show="!getIframeLoading">
-          </iframe>
-        </div>
+      <div style="position: relative; height: 78.5%; width: 100%; display: flex; align-items: center; justify-content: center;">
+        <q-spinner v-if="getIframeLoading" :color="iframeSpinnerColor" size="7em" />
+        <iframe v-if="!getIframeLoading" frameborder="0" scrolling="no" :src="getChatSrc" @load="iframeLoaded" height="100%" width="100%" style="border: none;"></iframe>
+      </div>
       </q-drawer>
 
       <q-page-container :class="[$q.dark.isActive ? 'bg-dark text-white' : 'bg-white text-dark']">
@@ -70,6 +63,9 @@
 import { ref, computed } from 'vue'
 import { useQuasar } from 'quasar'
 
+const layoutClasses = computed(() => [$q.dark.isActive ? 'bg-dark text-white' : 'bg-white text-dark'])
+const drawerClasses = computed(() => [$q.dark.isActive ? 'bg-dark text-white' : 'bg-white text-dark'])
+const iframeSpinnerColor = computed(() => $q.dark.isActive ? 'white' : 'primary')
 const drawer = ref(false)
 const miniState = ref(true)
 const iframeLoadingDark = ref(true)
@@ -114,6 +110,7 @@ const toggleFullscreen = () => {
     isFullscreen.value = true
   }
 }
+
 </script>
 
 <style scoped>
