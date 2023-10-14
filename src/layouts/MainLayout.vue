@@ -9,7 +9,7 @@
               <q-avatar>
                 <q-img src="../assets/logo-main.png" />
               </q-avatar>
-              <b :style="{ color: getColor() }">Daniels</b>
+              <b :class="{ 'transition-color': true }" :style="{ color: getColor() }">Daniels</b>
             </router-link>
 
           </q-toolbar-title>
@@ -143,7 +143,7 @@ const iframeLoaded = () => {
 const hover = ref(false)
 
 const getColor = () => {
-  if (hover.value) return '#1976D2'
+  if (hover.value) return '#FF6700'
   return $q.dark.isActive ? 'white' : 'black'
 }
 // eslint-disable-next-line no-unused-vars
@@ -181,6 +181,9 @@ const toggleFullscreen = () => {
 .bg-dark,
 .bg-white {
   transition: background-color 0.5s ease, color 0.5s ease;
+}
+.transition-color {
+  transition: color 0.5s ease;
 }
 .icon-button img {
 
