@@ -1,6 +1,6 @@
 <template>
   <div :class="[$q.dark.isActive ? 'bg-dark text-white' : 'bg-white text-dark']">
-    <q-layout view="hHh LpR fFf" :class="[$q.dark.isActive ? 'bg-dark text-white' : 'bg-white text-dark']">
+    <q-layout view="hhh LpR fFf" :class="[$q.dark.isActive ? 'bg-dark text-white' : 'bg-white text-dark']">
       <q-header :class="[$q.dark.isActive ? 'bg-dark text-white' : 'bg-white text-dark']">
         <q-toolbar :class="[$q.dark.isActive ? 'bg-dark text-white' : 'bg-white text-dark']">
           <q-btn dense flat round icon="menu" @click="toggleDrawer" />
